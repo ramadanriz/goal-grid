@@ -1,7 +1,8 @@
-import { Box, Flex, Button, useColorModeValue, Image, Menu, MenuButton, MenuList, MenuItem, Stack, useColorMode } from "@chakra-ui/react";
-import Logo from "../assets/logo.png";
+import { Box, Flex, Button, useColorModeValue, Text, Menu, MenuButton, MenuList, MenuItem, Stack, useColorMode, Link as ChakraLink } from "@chakra-ui/react";
 import { Spin as Hamburger } from "hamburger-react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
+import { menuList } from "../utils";
+import { NavLink as ReactRouterLink } from "react-router-dom";
 
 const Navbar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -11,20 +12,25 @@ const Navbar = () => {
       <Box bg={useColorModeValue("gray.100", "gray.900")} px={[4, 6, 10]}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <Box>
-            <Image src={Logo} alt="Logo" width={150} />
+            <Text as="b" fontSize="2xl">
+              GoalGrid
+            </Text>
           </Box>
           <Flex alignItems={"center"}>
-            <Stack direction={"row"} spacing={7}>
+            <Stack direction={"row"} spacing={3}>
               <Button onClick={toggleColorMode}>{colorMode === "light" ? <MoonIcon /> : <SunIcon />}</Button>
-              <Menu>
+              <Menu autoSelect={false}>
                 {({ isOpen }) => (
                   <>
-                    <MenuButton isActive={isOpen} as={Button} _hover={false} px="8px">
+                    <MenuButton as={Button} _hover={false} px="1px">
                       <Hamburger toggled={isOpen} size={20} rounded />
                     </MenuButton>
                     <MenuList>
-                      <MenuItem>Download</MenuItem>
-                      <MenuItem onClick={() => alert("Kagebunshin")}>Create a Copy</MenuItem>
+                      {menuList.map((menu, index) => (
+                        <ChakraLink key={index} as={ReactRouterLink} to={menu.link}>
+                          {({ isActive }) => <MenuItem bgColor={isActive ? "#171923" : ""}>{menu.name}</MenuItem>}
+                        </ChakraLink>
+                      ))}
                     </MenuList>
                   </>
                 )}
