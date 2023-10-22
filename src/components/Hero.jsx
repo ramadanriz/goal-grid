@@ -1,6 +1,6 @@
 import { Container, Heading, Stack, Text, Button } from "@chakra-ui/react";
 
-const Index = () => {
+const Hero = () => {
   return (
     <Container maxW={"5xl"}>
       <Stack textAlign={"center"} align={"center"} spacing={{ base: 8, md: 10 }} py={{ base: 20, md: 28 }}>
@@ -26,4 +26,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Hero;

@@ -1,4 +1,4 @@
-import Hero from "../components/Hero/Index";
+import Hero from "../components/Hero";
 
 const Home = () => {
   return <Hero />;
