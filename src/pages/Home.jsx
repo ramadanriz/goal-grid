@@ -1,11 +1,11 @@
-import Footer from "../components/Footer";
 import Hero from "../components/Hero";
+import Footer from "../components/Footer";
 
 const Home = () => {
   return (
     <>
       <Hero />
-      <Footer />
+      <Footer position={"fixed"} bottom={"0"} w={"full"} />
     </>
   );
 };
