@@ -1,7 +1,8 @@
-import { Center, Text, Grid, Stack, Card, CardBody, CardFooter, Image, Heading, Divider, Button, Spinner, useColorMode } from "@chakra-ui/react";
+import { Center, Text, Grid, Stack, Card, CardBody, CardFooter, Image, Heading, Divider, Button, Spinner, useColorMode, Link as ChakraLink } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import { getAllLeague } from "../utils";
 import Footer from "../components/Footer";
+import { Link as ReactRouterLink } from "react-router-dom";
 
 const League = () => {
   const [datas, setDatas] = useState(null);
@@ -20,14 +21,14 @@ const League = () => {
     };
 
     fetchData();
-  });
+  }, []);
 
   return (
     <>
       <Stack textAlign={"center"} align={"center"} spacing={{ base: 8, md: 10 }} py={{ base: 6, md: 10 }} px={{ base: 3, md: 10 }}>
         <Center>
           <Text as="b" fontSize="xl">
-            Klasemen Liga
+            Top Liga
           </Text>
         </Center>
         {isLoading ? (
@@ -45,11 +46,13 @@ const League = () => {
                   </Heading>
                 </CardBody>
                 <Divider />
-                <CardFooter>
-                  <Button variant="solid" colorScheme="blue">
-                    Detail
-                  </Button>
-                </CardFooter>
+                <Center>
+                  <CardFooter>
+                    <ChakraLink as={ReactRouterLink} to={`/leagues/${data.id}`}>
+                      <Button>Cek Klasemen</Button>
+                    </ChakraLink>
+                  </CardFooter>
+                </Center>
               </Card>
             ))}
           </Grid>
