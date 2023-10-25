@@ -30,3 +30,13 @@ export const getLeagueDetail = async (id) => {
     console.error(error);
   }
 };
+
+export const getLeagueStandings = async (id) => {
+  const thisYear = new Date().getFullYear();
+  try {
+    const response = await axios.get(`${baseUrl}/leagues/${id}/standings?season=${thisYear}&sort=asc`);
+    return response.data.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
