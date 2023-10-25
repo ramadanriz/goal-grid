@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
-import "@fontsource/poppins";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "@fontsource/poppins";
 import Root from "./components/Root";
 import { Home, League, Detail, NotFound } from "./pages";
 

@@ -1,26 +1,19 @@
-import { Center, Text, Grid, Stack, Card, CardBody, CardFooter, Image, Heading, Divider, Button, Spinner, useColorMode, Link as ChakraLink } from "@chakra-ui/react";
+import { Center, Text, Stack, Spinner } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import { getAllLeague } from "../utils";
 import Footer from "../components/Footer";
-import { Link as ReactRouterLink } from "react-router-dom";
+
+import List from "../components/League/List";
 
 const League = () => {
-  const [datas, setDatas] = useState();
+  const [leagues, setLeagues] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const { colorMode } = useColorMode();
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const apiData = await getAllLeague();
-        setDatas(apiData);
-        setIsLoading(false);
-      } catch (error) {
-        console.error("Error:", error);
-      }
-    };
-
-    fetchData();
+    getAllLeague().then(({ data }) => {
+      setLeagues(data);
+      setIsLoading(false);
+    });
   }, []);
 
   return (
@@ -36,26 +29,7 @@ const League = () => {
             <Spinner size="lg" />
           </Center>
         ) : (
-          <Grid templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(3, 1fr)", xl: "repeat(5, 1fr)" }} gap={6}>
-            {datas.map((data) => (
-              <Card maxW="sm" key={data.id}>
-                <CardBody>
-                  <Image src={colorMode === "light" ? data.logos.light : data.id == "chn.1" ? data.logos.light : data.logos.dark} alt="Liga Logo" />
-                  <Heading size="md" mt={6}>
-                    {data.name}
-                  </Heading>
-                </CardBody>
-                <Divider />
-                <Center>
-                  <CardFooter>
-                    <ChakraLink as={ReactRouterLink} to={`/league/${data.id.replace(".1", "")}`}>
-                      <Button>Cek Klasemen</Button>
-                    </ChakraLink>
-                  </CardFooter>
-                </Center>
-              </Card>
-            ))}
-          </Grid>
+          <List leagues={leagues} />
         )}
       </Stack>
       <Footer position={isLoading ? "fixed" : ""} bottom={isLoading ? 0 : ""} />
