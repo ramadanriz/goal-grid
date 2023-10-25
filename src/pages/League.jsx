@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 import { Link as ReactRouterLink } from "react-router-dom";
 
 const League = () => {
-  const [datas, setDatas] = useState(null);
+  const [datas, setDatas] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const { colorMode } = useColorMode();
 
@@ -48,7 +48,7 @@ const League = () => {
                 <Divider />
                 <Center>
                   <CardFooter>
-                    <ChakraLink as={ReactRouterLink} to={`/leagues/${data.id}`}>
+                    <ChakraLink as={ReactRouterLink} to={`/league/${data.id.replace(".1", "")}`}>
                       <Button>Cek Klasemen</Button>
                     </ChakraLink>
                   </CardFooter>
@@ -58,7 +58,7 @@ const League = () => {
           </Grid>
         )}
       </Stack>
-      <Footer />
+      <Footer position={isLoading ? "fixed" : ""} bottom={isLoading ? 0 : ""} />
     </>
   );
 };

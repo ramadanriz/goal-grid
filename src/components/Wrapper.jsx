@@ -1,17 +1,13 @@
-import PropTypes from "prop-types";
 import Navbar from "./Navbar";
+import { Outlet } from "react-router-dom";
 
-const Wrapper = (props) => {
+const Root = () => {
   return (
     <>
       <Navbar />
-      {props.children}
+      <Outlet />
     </>
   );
 };
 
-Wrapper.propTypes = {
-  children: PropTypes.node,
-};
-
-export default Wrapper;
+export default Root;

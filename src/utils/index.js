@@ -9,7 +9,7 @@ export const menuList = [
     name: "Home",
   },
   {
-    link: "/leagues",
+    link: "league",
     name: "League",
   },
 ];
@@ -25,7 +25,7 @@ export const getAllLeague = async () => {
 
 export const getLeagueDetail = async (id) => {
   try {
-    const response = await axios.get(`${baseUrl}/leagues/${id}`);
+    const response = await axios.get(`${baseUrl}/leagues/${id + ".1"}`);
     return response.data.data;
   } catch (error) {
     throw error;

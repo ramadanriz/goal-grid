@@ -7,14 +7,14 @@ import NotFound from "./pages/NotFound";
 
 function App() {
   return (
-    <Wrapper>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/leagues/:id" element={<Detail />} />
-        <Route path="/leagues" element={<League />} />
+    <Routes>
+      <Route path="/" element={<Wrapper />}>
+        <Route index element={<Home />} />
+        <Route path="league" element={<League />} />
+        <Route path="league/:id" element={<Detail />} />
         <Route path="*" element={<NotFound />} />
-      </Routes>
-    </Wrapper>
+      </Route>
+    </Routes>
   );
 }
 
