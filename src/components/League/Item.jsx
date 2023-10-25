@@ -2,7 +2,7 @@ import { Center, Card, CardBody, CardFooter, Image, Heading, Divider, Button, us
 import { Link as ReactRouterLink } from "react-router-dom";
 import PropTypes from "prop-types";
 
-const Item = ({ id, name, logos }) => {
+const Item = ({ id, name, slug, logos }) => {
   const { colorMode } = useColorMode();
   return (
     <Card maxW="sm">
@@ -15,7 +15,7 @@ const Item = ({ id, name, logos }) => {
       <Divider />
       <Center>
         <CardFooter>
-          <ChakraLink as={ReactRouterLink} to={`/league/${id.replace(".1", "")}`}>
+          <ChakraLink as={ReactRouterLink} to={`/league/${id}/overview/${slug}`}>
             <Button>Cek Klasemen</Button>
           </ChakraLink>
         </CardFooter>
@@ -27,6 +27,7 @@ const Item = ({ id, name, logos }) => {
 Item.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
+  slug: PropTypes.string.isRequired,
   logos: PropTypes.object.isRequired,
 };
 
