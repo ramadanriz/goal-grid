@@ -1,9 +1,32 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import "@fontsource/poppins";
-import { BrowserRouter } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Root from "./components/Root";
+import { Home, League, Detail, NotFound } from "./pages";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Root />,
+    errorElement: <NotFound />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/league",
+        element: <League />,
+      },
+      {
+        path: "/league/:id",
+        element: <Detail />,
+      },
+    ],
+  },
+]);
 
 const theme = extendTheme({
   fonts: {
@@ -15,9 +38,7 @@ const theme = extendTheme({
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ChakraProvider theme={theme}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <RouterProvider router={router} />
     </ChakraProvider>
   </React.StrictMode>
 );
