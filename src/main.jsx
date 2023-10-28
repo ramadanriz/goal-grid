@@ -4,7 +4,7 @@ import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "@fontsource/poppins";
 import Root from "./components/Root";
-import { Home, League, Detail, NotFound } from "./pages";
+import { Home, League, Detail, NotFound, News } from "./pages";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: "/league/:id/overview/:slug",
         element: <Detail />,
+      },
+      {
+        path: "/news",
+        element: <News />,
       },
     ],
   },

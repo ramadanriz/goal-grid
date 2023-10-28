@@ -9,7 +9,11 @@ export const menuList = [
   },
   {
     link: "league",
-    name: "League",
+    name: "Klasemen Liga",
+  },
+  {
+    link: "news",
+    name: "Berita",
   },
 ];
 
@@ -36,6 +40,15 @@ export const getLeagueStandings = async (id) => {
   try {
     const response = await axios.get(`${baseUrl}/leagues/${id}/standings?season=${thisYear}&sort=asc`);
     return response.data.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const getNews = async () => {
+  try {
+    const response = await axios.get("https://api-berita-indonesia.vercel.app/tempo/bola");
+    return response.data;
   } catch (error) {
     console.error(error);
   }
