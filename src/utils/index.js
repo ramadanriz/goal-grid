@@ -45,9 +45,9 @@ export const getLeagueStandings = async (id) => {
   }
 };
 
-export const getNews = async () => {
+export const getNews = async (news = "tempo") => {
   try {
-    const response = await axios.get("https://api-berita-indonesia.vercel.app/tempo/bola");
+    const response = await axios.get(`https://api-berita-indonesia.vercel.app/${news}/bola`);
     return response.data;
   } catch (error) {
     console.error(error);
