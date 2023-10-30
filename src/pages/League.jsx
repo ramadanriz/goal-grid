@@ -19,7 +19,7 @@ const League = () => {
     <>
       <Stack textAlign={"center"} align={"center"} spacing={{ base: 8, md: 10 }} py={{ base: 6, md: 10 }} px={{ base: 3, md: 10 }}>
         <Center>
-          <Heading size="lg">Top Liga</Heading>
+          <Heading size="lg">Top League</Heading>
         </Center>
         {isLoading ? (
           <Center>
