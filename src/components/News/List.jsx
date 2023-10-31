@@ -24,8 +24,8 @@ const List = ({ news, totalPages, itemsPerPage }) => {
         onPageChange={handlePageChange}
         pageCount={totalPages}
         forcePage={currentPage}
-        nextLabel=<ChevronRightIcon boxSize={7} />
-        previousLabel=<ChevronLeftIcon boxSize={7} />
+        nextLabel={<ChevronRightIcon boxSize={7} />}
+        previousLabel={<ChevronLeftIcon boxSize={7} />}
         containerClassName="pagination"
         pageLinkClassName="page-num"
         previousLinkClassName="page-num"
