@@ -1,7 +1,8 @@
-import { Box, Image, Skeleton, Stack, Text, Link, Heading } from "@chakra-ui/react";
+import { Box, Image, Skeleton, Stack, Text, Link, Heading, useColorMode } from "@chakra-ui/react";
 import PropTypes from "prop-types";
 
 const Item = ({ link, title, description, thumbnail }) => {
+  const { colorMode } = useColorMode();
   return (
     <Stack direction={{ base: "column", md: "row" }} justifyContent="left" my={5}>
       <Box mr={{ base: 0, md: 5 }} pos="relative">
@@ -12,11 +13,11 @@ const Item = ({ link, title, description, thumbnail }) => {
           {title}
         </Heading>
         <Box>
-          <Text fontSize="md" textAlign="left" lineHeight="1.375" fontWeight="400" color="gray.500">
+          <Text fontSize="md" textAlign="left" lineHeight="1.375" fontWeight="400" color={colorMode === "light" ? "gray.500" : "gray.300"}>
             {description}
           </Text>
         </Box>
-        <Link href={link} target="_blank" fontSize="sm" color="blue.400">
+        <Link href={link} target="_blank" fontSize="sm" color={colorMode === "light" ? "blue.500" : "blue.300"}>
           Cek selengkapnya →
         </Link>
       </Stack>
