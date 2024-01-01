@@ -36,7 +36,8 @@ export const getLeagueDetail = async (id) => {
 };
 
 export const getLeagueStandings = async (id) => {
-  const thisYear = new Date().getFullYear();
+  const {data} = axios.get(`${baseUrl}/leagues/${id}/seasons`);
+  console.log(data);
   try {
     const response = await axios.get(`${baseUrl}/leagues/${id}/standings?season=2023&sort=asc`);
     return response.data.data;
